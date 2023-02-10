@@ -94,7 +94,7 @@ std::shared_ptr<std::vector<Eigen::MatrixXd>> LRSCFRestart<SCFMode>::fetchEigenp
       }
 
       // initialize file
-      HDF5::H5File file(fName.c_str(), H5F_ACC_RDONLY, H5P_DEFAULT);
+      HDF5::H5File file(fName.c_str(), H5F_ACC_RDONLY);
 
       // fill up eigenvectors with loaded data
       for (unsigned iSet = 0; iSet < nSets; ++iSet) {

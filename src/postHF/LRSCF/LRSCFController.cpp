@@ -112,7 +112,7 @@ void LRSCFController<SCFMode>::loadFromH5(Options::LRSCF_TYPE type) {
   auto loadEigenpairs = [&](std::string input) {
     printf("\n   $  %-20s\n\n", input.c_str());
 
-    HDF5::H5File file(input.c_str(), H5F_ACC_RDONLY, H5P_DEFAULT);
+    HDF5::H5File file(input.c_str(), H5F_ACC_RDONLY);
     HDF5::dataset_exists(file, "X");
     HDF5::dataset_exists(file, "Y");
     HDF5::dataset_exists(file, "EIGENVALUES");

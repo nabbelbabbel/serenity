@@ -977,7 +977,7 @@ std::shared_ptr<HDF5::H5File> DLPNO_CCSD::tryLoadingIntegrals() {
       if (!file) {
         std::string fileName = _localCorrelationController->getPairIntegralFileName();
         HDF5::Filepath name(fileName);
-        file = std::make_shared<HDF5::H5File>(name.c_str(), H5F_ACC_RDONLY, H5P_DEFAULT);
+        file = std::make_shared<HDF5::H5File>(name.c_str(), H5F_ACC_RDONLY);
       } // if !file
       if (memoryUsed + orbitalPairSet->memoryDemand(_linearScalingSigmaVector) < totalMemoryAvailable) {
         orbitalPairSet->fromHDF5(*file);

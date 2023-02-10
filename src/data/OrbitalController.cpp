@@ -362,7 +362,7 @@ void OrbitalController<SCFMode>::fromHDF5(std::string fBaseName, std::string id)
 template<>
 void OrbitalController<Options::SCF_MODES::RESTRICTED>::coefficientsfromHDF5(std::string fBaseName, std::string id) {
   HDF5::Filepath name(fBaseName + ".orbs.res.h5");
-  HDF5::H5File file(name.c_str(), H5F_ACC_RDONLY, H5P_DEFAULT);
+  HDF5::H5File file(name.c_str(), H5F_ACC_RDONLY);
   HDF5::dataset_exists(file, "coefficients");
   HDF5::attribute_exists(file, "ID");
   HDF5::check_attribute(file, "ID", id);
@@ -373,7 +373,7 @@ void OrbitalController<Options::SCF_MODES::RESTRICTED>::coefficientsfromHDF5(std
 template<>
 void OrbitalController<Options::SCF_MODES::UNRESTRICTED>::coefficientsfromHDF5(std::string fBaseName, std::string id) {
   HDF5::Filepath name(fBaseName + ".orbs.unres.h5");
-  HDF5::H5File file(name.c_str(), H5F_ACC_RDONLY, H5P_DEFAULT);
+  HDF5::H5File file(name.c_str(), H5F_ACC_RDONLY);
   HDF5::dataset_exists(file, "coefficients_alpha");
   HDF5::dataset_exists(file, "coefficients_beta");
   HDF5::attribute_exists(file, "ID");
@@ -410,7 +410,7 @@ void OrbitalController<Options::SCF_MODES::UNRESTRICTED>::toHDF5(std::string fBa
 template<>
 void OrbitalController<Options::SCF_MODES::RESTRICTED>::eigenvaluesfromHDF5(std::string fBaseName, std::string id) {
   HDF5::Filepath name(fBaseName + ".orbs.res.h5");
-  HDF5::H5File file(name.c_str(), H5F_ACC_RDONLY, H5P_DEFAULT);
+  HDF5::H5File file(name.c_str(), H5F_ACC_RDONLY);
   HDF5::dataset_exists(file, "eigenvalues");
   HDF5::attribute_exists(file, "ID");
   HDF5::check_attribute(file, "ID", id);
@@ -422,7 +422,7 @@ void OrbitalController<Options::SCF_MODES::RESTRICTED>::eigenvaluesfromHDF5(std:
 template<>
 void OrbitalController<Options::SCF_MODES::UNRESTRICTED>::eigenvaluesfromHDF5(std::string fBaseName, std::string id) {
   HDF5::Filepath name(fBaseName + ".orbs.unres.h5");
-  HDF5::H5File file(name.c_str(), H5F_ACC_RDONLY, H5P_DEFAULT);
+  HDF5::H5File file(name.c_str(), H5F_ACC_RDONLY);
   HDF5::dataset_exists(file, "eigenvalues_alpha");
   HDF5::dataset_exists(file, "eigenvalues_beta");
   HDF5::attribute_exists(file, "ID");
@@ -439,7 +439,7 @@ void OrbitalController<Options::SCF_MODES::RESTRICTED>::coreOrbitalsfromHDF5(std
       Eigen::VectorXi::Zero(_basisController->getNBasisFunctions()));
   try {
     HDF5::Filepath name(fBaseName + ".orbs.res.h5");
-    HDF5::H5File file(name.c_str(), H5F_ACC_RDONLY, H5P_DEFAULT);
+    HDF5::H5File file(name.c_str(), H5F_ACC_RDONLY);
     HDF5::dataset_exists(file, "coreOrbitals");
     HDF5::attribute_exists(file, "ID");
     HDF5::check_attribute(file, "ID", id);
@@ -460,7 +460,7 @@ void OrbitalController<Options::SCF_MODES::UNRESTRICTED>::coreOrbitalsfromHDF5(s
       Eigen::VectorXi::Zero(_basisController->getNBasisFunctions()));
   try {
     HDF5::Filepath name(fBaseName + ".orbs.unres.h5");
-    HDF5::H5File file(name.c_str(), H5F_ACC_RDONLY, H5P_DEFAULT);
+    HDF5::H5File file(name.c_str(), H5F_ACC_RDONLY);
     HDF5::dataset_exists(file, "coreOrbitals_alpha");
     HDF5::dataset_exists(file, "coreOrbitals_beta");
     HDF5::attribute_exists(file, "ID");

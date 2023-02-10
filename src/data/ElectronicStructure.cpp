@@ -195,7 +195,7 @@ void ElectronicStructure<SCFMode>::toHDF5(std::string fBaseName, std::string id)
 template<>
 void ElectronicStructure<Options::SCF_MODES::RESTRICTED>::fockFromHDF5(std::string fBaseName, std::string id) {
   HDF5::Filepath name(fBaseName + ".FockMatrix.res.h5");
-  HDF5::H5File file(name.c_str(), H5F_ACC_RDONLY, H5P_DEFAULT);
+  HDF5::H5File file(name.c_str(), H5F_ACC_RDONLY);
   HDF5::dataset_exists(file, "FockMatrix");
   HDF5::attribute_exists(file, "ID");
   HDF5::check_attribute(file, "ID", id);
@@ -207,7 +207,7 @@ void ElectronicStructure<Options::SCF_MODES::RESTRICTED>::fockFromHDF5(std::stri
 template<>
 void ElectronicStructure<Options::SCF_MODES::UNRESTRICTED>::fockFromHDF5(std::string fBaseName, std::string id) {
   HDF5::Filepath name(fBaseName + ".FockMatrix.unres.h5");
-  HDF5::H5File file(name.c_str(), H5F_ACC_RDONLY, H5P_DEFAULT);
+  HDF5::H5File file(name.c_str(), H5F_ACC_RDONLY);
   HDF5::dataset_exists(file, "FockMatrix_alpha");
   HDF5::dataset_exists(file, "FockMatrix_beta");
   HDF5::attribute_exists(file, "ID");

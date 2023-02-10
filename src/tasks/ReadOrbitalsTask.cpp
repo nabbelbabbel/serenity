@@ -83,7 +83,7 @@ std::string ReadOrbitalsTask<SCFMode>::getSerenityIDFromFile() {
     filePath += ".orbs.unres.h5";
   }
   HDF5::Filepath name(filePath);
-  HDF5::H5File file(name.c_str(), H5F_ACC_RDONLY, H5P_DEFAULT);
+  HDF5::H5File file(name.c_str(), H5F_ACC_RDONLY);
   HDF5::attribute_exists(file, "ID");
   std::string id = HDF5::load_attribute<std::string>(file, "ID");
   file.close();
